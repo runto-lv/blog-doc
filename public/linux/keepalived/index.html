@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-cn" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="http://10.0.2.3/images/favicon.ico" type="image/png">
+
+    <title>Keepalived的使用方法 :: Runto&#39;s Blog</title>
+
+    
+    <link href="http://10.0.2.3/css/nucleus.css?1584590331" rel="stylesheet">
+    <link href="http://10.0.2.3/css/fontawesome-all.min.css?1584590331" rel="stylesheet">
+    <link href="http://10.0.2.3/css/hybrid.css?1584590331" rel="stylesheet">
+    <link href="http://10.0.2.3/css/featherlight.min.css?1584590331" rel="stylesheet">
+    <link href="http://10.0.2.3/css/perfect-scrollbar.min.css?1584590331" rel="stylesheet">
+    <link href="http://10.0.2.3/css/auto-complete.css?1584590331" rel="stylesheet">
+    <link href="http://10.0.2.3/css/theme.css?1584590331" rel="stylesheet">
+    <link href="http://10.0.2.3/css/hugo-theme.css?1584590331" rel="stylesheet">
+    
+
+    <script src="http://10.0.2.3/js/jquery-2.x.min.js?1584590331"></script>
+
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/linux/keepalived/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+  
+  
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://www.rainbond.com">
+  <img src="//www.rainbond.com/images/logos/logo_bg.png" width="90%"/>
+</a>
+
+    </div>
+    <section id="footer">
+      <center>
+    
+    <a class="github-button" href="https://github.com/goodrain/rainbond" data-icon="octicon-star" data-show-count="true" aria-label="Star goodrain/rainbond on GitHub">Star</a>
+
+    
+    <a class="github-button" href="https://github.com/goodrain/rainbond/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork goodrain/rainbond on GitHub">Fork</a>
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+    </section>
+    
+    <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="http://10.0.2.3/js/algoliasearch.min.js?1584590331"></script>
+<script type="text/javascript" src="http://10.0.2.3/js/auto-complete.js?1584590331"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/10.0.2.3";
+    
+</script>
+<script type="text/javascript" src="http://10.0.2.3/js/search.js?1584590331"></script>
+
+    
+  </div>
+
+  <div class="highlightable">
+    <ul class="topics">
+
+      
+      
+      
+
+
+
+
+
+<li data-nav-id="/post/" title="前言" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/post/">
+    <b>1. </b>前言
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/linux/" title="Linux相关" class="dd-item 
+        parent
+        
+        
+        ">
+  <a href="http://10.0.2.3/linux/">
+    <b>2. </b>Linux相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+  <ul>
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+<li data-nav-id="/linux/design-concept/" title="设计思想" class="dd-item ">
+  <a href="http://10.0.2.3/linux/design-concept/">
+    设计思想
+    <i class="fas fa-check read-icon"></i>
+  </a>
+</li>
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+<li data-nav-id="/linux/flow/" title="业务流程" class="dd-item ">
+  <a href="http://10.0.2.3/linux/flow/">
+    业务流程
+    <i class="fas fa-check read-icon"></i>
+  </a>
+</li>
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+<li data-nav-id="/linux/keepalived/" title="Keepalived的使用方法" class="dd-item active">
+  <a href="http://10.0.2.3/linux/keepalived/">
+    Keepalived的使用方法
+    <i class="fas fa-check read-icon"></i>
+  </a>
+</li>
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+<li data-nav-id="/linux/architecture/" title="技术架构" class="dd-item ">
+  <a href="http://10.0.2.3/linux/architecture/">
+    技术架构
+    <i class="fas fa-check read-icon"></i>
+  </a>
+</li>
+
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/windows/" title="Windows相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/windows/">
+    <b>3. </b>Windows相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/virtualization/" title="虚拟化相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/virtualization/">
+    <b>4. </b>虚拟化相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/nginx/" title="Nginx相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/nginx/">
+    <b>5. </b>Nginx相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/aliyun/" title="阿里云相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/aliyun/">
+    <b>6. </b>阿里云相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/docker/" title="Docker相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/docker/">
+    <b>7. </b>Docker相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/kubernetes/" title="Kubernetes相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/kubernetes/">
+    <b>8. </b>Kubernetes相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/database/" title="数据库相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/database/">
+    <b>9. </b>数据库相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/openvpn/" title="Openvpn相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/openvpn/">
+    <b>10. </b>Openvpn相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/shell/" title="Shell相关" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/shell/">
+    <b>11. </b>Shell相关
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+<li data-nav-id="/other/" title="其它" class="dd-item 
+        
+        
+        
+        ">
+  <a href="http://10.0.2.3/other/">
+    <b>100. </b>其它
+    
+    <i class="fas fa-check read-icon"></i>
+    
+  </a>
+  
+  
+</li>
+
+
+
+      
+      
+    </ul>
+
+    
+    <section id="prefooter">
+      <hr />
+      <ul>
+        
+        <li>
+          <a class="padding" target="_blank" href="https://t.goodrain.com">
+            <i class="fas fa-fw fa-discourse"></i> 社区
+          </a>
+        </li>
+        <li>
+          <a class="padding" target="_blank" href="https://blog.goodrain.com">
+            <i class="fas fa-fw fa-blog"></i> 博客
+          </a>
+        </li>
+        <li>
+          <a class="padding" target="_blank" href="https://www.rainbond.com/docs/enterprise_service/">
+            <i class="fas fa-fw fa-bookmark"></i> 企业服务
+          </a>
+        </li>
+        
+        <li><a class="padding" href="#" data-clear-history-toggle="">
+          <i class="fas fa-history fa-fw"></i>清除浏览历史</a>
+        </li>
+        
+        
+      </ul>
+    </section>
+    
+  </div>
+</nav>
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                  
+                  
+                  
+                  <div id="top-github-link">
+                    <a class="github-link" title='' href="https://github.com/goodrain/rainbond-docs/edit/master/content/linux/keepalived.md" target="blank">
+                      <i class="fas fa-code-branch"></i>
+                      <span id="top-github-link-text"></span>
+                    </a>
+                  </div>
+                  
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='http://10.0.2.3/'>Runto的技术博客</a> > <a href='http://10.0.2.3/linux/'>Linux相关</a> > Keepalived的使用方法
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#测试一下图片">测试一下图片</a>
+<ul>
+<li>
+<ul>
+<li><a href="#抽象流程">抽象流程</a></li>
+<li><a href="#场景流程">场景流程</a>
+<ul>
+<li><a href="#互联网公司交付流程">互联网公司交付流程</a></li>
+<li><a href="#企业软件公司交付流程">企业软件公司交付流程</a></li>
+<li><a href="#行业云交付流程">行业云交付流程</a></li>
+<li><a href="#大型企事业单位it流程">大型企事业单位IT流程</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+
+        
+        <div id="body-inner">
+          
+            <h1>Keepalived的使用方法</h1>
+          
+
+        
+
+
+
+
+<h2 id="测试一下图片">测试一下图片</h2>
+
+<p><img src="../img/screenshot.png" alt="1583138735899" /></p>
+
+<h4 id="抽象流程">抽象流程</h4>
+
+<p><img width="100%" src="http://grstatic.oss-cn-shanghai.aliyuncs.com/images/docs/5.0/architecture/arch5.png"></img></p>
+
+<p>Rainbond的流程建立在<code>以应用为中心</code>抽象基础上，以交付为目的</p>
+
+<h4 id="场景流程">场景流程</h4>
+
+<h5 id="互联网公司交付流程">互联网公司交付流程</h5>
+
+<p><img width="100%" src="http://grstatic.oss-cn-shanghai.aliyuncs.com/images/docs/5.0/architecture/flow1.png"></img></p>
+
+<h5 id="企业软件公司交付流程">企业软件公司交付流程</h5>
+
+<p><img width="100%" src="http://grstatic.oss-cn-shanghai.aliyuncs.com/images/docs/5.0/architecture/flow2.png"></img></p>
+
+<h5 id="行业云交付流程">行业云交付流程</h5>
+
+<p><img width="100%" src="http://grstatic.oss-cn-shanghai.aliyuncs.com/images/docs/5.0/architecture/flow3.png"></img></p>
+
+<h5 id="大型企事业单位it流程">大型企事业单位IT流程</h5>
+
+<p><img width="100%" src="http://grstatic.oss-cn-shanghai.aliyuncs.com/images/docs/5.0/architecture/flow4.png"></img></p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="http://10.0.2.3/linux/flow/" title="业务流程"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="http://10.0.2.3/linux/architecture/" title="技术架构" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="http://10.0.2.3/js/clipboard.min.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/perfect-scrollbar.min.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/perfect-scrollbar.jquery.min.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/jquery.sticky.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/featherlight.min.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/html5shiv-printshiv.min.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/highlight.pack.js?1584590331"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="http://10.0.2.3/js/modernizr.custom.71422.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/learn.js?1584590331"></script>
+    <script src="http://10.0.2.3/js/hugo-learn.js?1584590331"></script>
+
+    <link href="http://10.0.2.3/mermaid/mermaid.css?1584590331" type="text/css" rel="stylesheet" />
+    <script src="http://10.0.2.3/mermaid/mermaid.js?1584590331"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?19583a0ffdf6a67e3798ed126b51af5f";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+  </body>
+</html>
+

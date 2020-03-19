@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://10.0.2.3/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/post/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/linux/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/windows/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/linux/design-concept/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/linux/flow/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/linux/keepalived/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/linux/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/virtualization/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/aliyun/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/docker/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/kubernetes/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/database/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/openvpn/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/shell/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/other/</loc>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://10.0.2.3/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
