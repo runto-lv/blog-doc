@@ -1,12 +1,12 @@
 ---
-baseurl: "https://www.rainbond.com/docs/"
+baseurl: "https://www.runto.lv/"
 languageCode: "zh-cn"
 DefaultContentLanguage: "zh-cn"
 title: "Runto's Blog"
 theme: "hugo-theme-learn"
 canonifyURLs: true
 params:
-  editURL: "https://github.com/goodrain/rainbond-docs/edit/master/content/"
+  editURL: "https://github.com/runto-lv/blog-doc/edit/master/content/"
   showVisitedLinks: true
   disableShortcutsTitle: false
 outputs:

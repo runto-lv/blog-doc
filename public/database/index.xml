@@ -2,13 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>数据库相关 on Runto&#39;s Blog</title>
-    <link>http://10.0.2.3/database/</link>
+    <link>https://www.runto.lv/database/</link>
     <description>Recent content in 数据库相关 on Runto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
-	<atom:link href="http://10.0.2.3/database/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.runto.lv/database/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mysql双主模式两台Server配置文件</title>
+      <link>https://www.runto.lv/database/mysql_conf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.runto.lv/database/mysql_conf/</guid>
+      <description>mysql master
+[mysqld] datadir=/var/lib/mysql socket=/var/lib/mysql/mysql.sock # Disabling symbolic-links is recommended to prevent assorted security risks symbolic-links=0 # Settings user and group are ignored when systemd is used. # If you need to run mysqld under a different user or group, # customize your systemd unit file for mariadb according to the # instructions in http://fedoraproject.org/wiki/Systemd server-id=2 relay_log = mysql-relay-bin log_bin =mysql-bin log_slave_updates =1 auto_increment_increment=2 auto_increment_offset=2 character-set-server=utf8 lower_case_table_names=1 [mysqld_safe] log-error=/var/log/mariadb/mariadb.log pid-file=/var/run/mariadb/mariadb.pid # # include all files from the config directory # !</description>
+    </item>
     
   </channel>
 </rss>

@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openvpn相关 on Runto&#39;s Blog</title>
-    <link>http://10.0.2.3/openvpn/</link>
+    <link>https://www.runto.lv/openvpn/</link>
     <description>Recent content in Openvpn相关 on Runto&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     
-	<atom:link href="http://10.0.2.3/openvpn/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.runto.lv/openvpn/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

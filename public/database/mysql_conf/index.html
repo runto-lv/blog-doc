@@ -9,7 +9,7 @@
 
     <link rel="icon" href="https://www.runto.lv/images/favicon.ico" type="image/png">
 
-    <title>数据库相关 :: Runto&#39;s Blog</title>
+    <title>mysql双主模式两台Server配置文件 :: Runto&#39;s Blog</title>
 
     
     <link href="https://www.runto.lv/css/nucleus.css?1584637488" rel="stylesheet">
@@ -32,7 +32,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/database/">
+  <body class="" data-url="/database/mysql_conf/">
     <nav id="sidebar" class="showVisitedLinks">
 
   
@@ -366,7 +366,7 @@
 
 <li data-nav-id="/database/" title="数据库相关" class="dd-item 
         parent
-        active
+        
         
         ">
   <a href="https://www.runto.lv/database/">
@@ -391,7 +391,7 @@
 
 
 
-<li data-nav-id="/database/mysql_conf/" title="mysql双主模式两台Server配置文件" class="dd-item ">
+<li data-nav-id="/database/mysql_conf/" title="mysql双主模式两台Server配置文件" class="dd-item active">
   <a href="https://www.runto.lv/database/mysql_conf/">
     mysql双主模式两台Server配置文件
     <i class="fas fa-check read-icon"></i>
@@ -531,7 +531,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='' href="https://github.com/runto-lv/blog-doc/edit/master/content/database/_index.md" target="blank">
+                    <a class="github-link" title='' href="https://github.com/runto-lv/blog-doc/edit/master/content/database/mysql_conf.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text"></span>
                     </a>
@@ -546,6 +546,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -556,7 +558,13 @@
             
           
           
-            <a href='https://www.runto.lv/'>Runto的技术博客</a> > 数据库相关
+            
+            
+          
+          
+            <a href='https://www.runto.lv/'>Runto的技术博客</a> > <a href='https://www.runto.lv/database/'>数据库相关</a> > mysql双主模式两台Server配置文件
+          
+         
           
          
           
@@ -565,32 +573,95 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+                
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>mysql双主模式两台Server配置文件</h1>
           
 
         
 
 
+<p>mysql master</p>
+
+<pre><code>[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+server-id=2
+relay_log = mysql-relay-bin
+log_bin =mysql-bin
+log_slave_updates =1
+auto_increment_increment=2
+auto_increment_offset=2
+character-set-server=utf8
+lower_case_table_names=1
+
+[mysqld_safe]
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
 
 
-<h1 id="快速开始">快速开始</h1>
+</code></pre>
 
-<p>本章节将从Rainbond的<a href="https://www.runto.lv/architecture/design-concept/">设计思想</a>，<a href="https://www.runto.lv/architecture/architecture/">技术架构</a>等多方面带你了解Rainbond。</p>
+<p>mysql slave</p>
+
+<pre><code>[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+# Settings user and group are ignored when systemd is used.
+# If you need to run mysqld under a different user or group,
+# customize your systemd unit file for mariadb according to the
+# instructions in http://fedoraproject.org/wiki/Systemd
+server-id = 1
+log-bin = binlog
+relay_log = mysql-relay-bin
+log_slave_updates =1
+auto_increment_increment=2
+auto_increment_offset=1
+character-set-server=utf8
+lower_case_table_names=1
+
+[mysqld_safe]
+log-error=/var/log/mariadb/mariadb.log
+pid-file=/var/run/mariadb/mariadb.pid
+
+#
+# include all files from the config directory
+#
+!includedir /etc/my.cnf.d
+
+</code></pre>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
+
         
         </div> 
         
@@ -831,8 +902,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -852,6 +921,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -905,10 +977,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="https://www.runto.lv/kubernetes/" title="Kubernetes相关"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="https://www.runto.lv/database/" title="数据库相关"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="https://www.runto.lv/database/mysql_conf/" title="mysql双主模式两台Server配置文件" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="https://www.runto.lv/openvpn/" title="Openvpn相关" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -947,3 +1019,4 @@
 </script>
   </body>
 </html>
+

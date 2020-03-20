@@ -3,80 +3,84 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://10.0.2.3/</loc>
+    <loc>https://www.runto.lv/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/post/</loc>
+    <loc>https://www.runto.lv/post/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/linux/</loc>
+    <loc>https://www.runto.lv/linux/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/windows/</loc>
+    <loc>https://www.runto.lv/windows/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/linux/design-concept/</loc>
+    <loc>https://www.runto.lv/linux/design-concept/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/linux/flow/</loc>
+    <loc>https://www.runto.lv/linux/flow/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/linux/keepalived/</loc>
+    <loc>https://www.runto.lv/linux/keepalived/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/linux/architecture/</loc>
+    <loc>https://www.runto.lv/linux/architecture/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/virtualization/</loc>
+    <loc>https://www.runto.lv/virtualization/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/nginx/</loc>
+    <loc>https://www.runto.lv/nginx/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/aliyun/</loc>
+    <loc>https://www.runto.lv/aliyun/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/docker/</loc>
+    <loc>https://www.runto.lv/docker/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/kubernetes/</loc>
+    <loc>https://www.runto.lv/kubernetes/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/database/</loc>
+    <loc>https://www.runto.lv/database/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/openvpn/</loc>
+    <loc>https://www.runto.lv/database/mysql_conf/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/shell/</loc>
+    <loc>https://www.runto.lv/openvpn/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/other/</loc>
+    <loc>https://www.runto.lv/shell/</loc>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/categories/</loc>
+    <loc>https://www.runto.lv/other/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.runto.lv/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://10.0.2.3/tags/</loc>
+    <loc>https://www.runto.lv/tags/</loc>
     <priority>0</priority>
   </url>
   
